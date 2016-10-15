@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js"></script>
+
+<ul id="example-1">
+    <li v-for="item in items">
+        {{ parentMessage }} - {{ $index }} - {{ item.message }}
+    </li>
+</ul>
+<script>
+    var vm = new Vue({
+        el: '#example-1',
+        data: {
+            parentMessage: '这是parentMessage',
+            items: [
+                {message: 'zkhzz'},
+                {message: 'test2'}
+            ]
+        }
+    })
+</script>
+
+<h3>template v-for</h3>
+<ul id="vm2">
+    <template v-for="item in items">
+        <li>{{ item.msg }}</li>
+        <li class="diver">hah</li>
+    </template>
+</ul>
+<script>
+    var vm2 = new Vue({
+        el: '#vm2',
+        data: {
+            items:[
+                {msg:'msg1'},
+                {msg:'msg2'}
+            ]
+        }
+    })
+</script>
+
+<h3>对象 v-for</h3>
+<p>也可以使用 v-for 遍历对象。除了 $index 之外，作用域内还可以访问另外一个特殊变量 $key</p>
+<ul id="vm3">
+    <li v-for="value in object">
+        {{ $key }} : {{ value }}
+    </li>
+</ul>
+
+<script>
+    var vm3 = new Vue({
+        el: '#vm3',
+        data: {
+            object:{
+                name: 'zkhzz',
+                age: 21,
+                sex: '男',
+                school: 'GDUT'
+            }
+        }
+    })
+</script>
+
+<h3>值域v-for</h3>
+<p>v-for 也可以接收一个整数，此时它将重复模板数次。</p>
+
+<div id="vm4">
+    <span  v-for="n in 10">{{ n }}</span>
+</div>
+<script>
+    var vm4 = new Vue({
+        el: '#vm4',
+        
+    })
+</script>
+</body>
+</html>
