@@ -42,14 +42,39 @@
 
 <div id="div1" v-bind:class="[classA,classB]">class绑定3</div>
 <script>
-    var vm = new Vue({
+    var vm3 = new Vue({
         el: '#div1',
         data:{
             classA:'class-a',
             classB:'class-b'
         }
     })
+</script>
 
+<h2>绑定内联样式</h2>
+<div id="div2" v-bind:style="{ color: activeColor, fontSize: activeFont + 'px'}">绑定内联样式</div>
+<script>
+    var vm4 = new Vue({
+        el: '#div2',
+        data:{
+            activeColor: '#b5b5b5',
+            activeFont: 15
+        }
+    });
+</script>
+
+<h3>直接绑定到一个对象</h3>
+<div id="div5" v-bind:style="styleObject">这是直接绑定到对象</div>
+<script>
+    var vm5 = new Vue({
+        el: '#div5',
+        data: {
+            styleObject:{
+                color: '#b6b6b6b',
+                fontSize: 60 + 'px'
+            }
+        }
+    })
 </script>
 </body>
 </html>
