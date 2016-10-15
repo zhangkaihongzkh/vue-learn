@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js"></script>
+
+<h2>方法处理器</h2>
+<p>可以用 v-on 指令监听 DOM 事件：</p>
+<div id="example-1">
+    <button v-on:click="alertMsg">点击触发v-on</button>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#example-1',
+        methods: {
+            alertMsg:function(event){
+                alert("这是方法绑定的测试")
+                alert(event.target.tagName)
+            }
+        }
+    })
+</script>
+
+<h3>内联语句处理器</h3>
+<p>除了直接绑定到一个方法，也可以用内联 JavaScript 语句：</p>
+
+<div id="example-2">
+    <button v-on:click="say('hello!')">触发事件2</button>
+    <button v-on:click="say('i am fine')">触发事件3</button>
+</div>
+
+<script>
+    var vm2 = new Vue({
+        el: '#example-2',
+        methods: {
+            say: function(msg){
+                alert(msg + '事件触发了')
+            }
+        }
+    })
+</script>
+
+<p>类似于内联表达式，事件处理器限制为一个语句。</p>
+<p>有时也需要在内联语句处理器中访问原生 DOM 事件。可以用特殊变量 $event 把它传入方法：</p>
+
+<button id="vm3" v-on:click="say('hello', $event)">事件触发器4</button>
+
+<script>
+    var vm3 = new Vue({
+        el: '#vm3',
+        methods: {
+            say: function(msg, event){
+                console.log(msg);
+                event.preventDefault();
+            }
+        }
+    })
+</script>
+
+<h3>事件修饰符</h3>
+<p>在事件处理器中经常需要调用 event.preventDefault() 或 event.stopPropagation()。尽管我们在方法内可以轻松做到，不过让方法是纯粹的数据逻辑而不处理 DOM 事件细节会更好。</p>
+
+<p>为了解决这个问题，Vue.js 为 v-on 提供两个 事件修饰符：.prevent 与 .stop。你是否还记得修饰符是点号打头的指令后缀？</p>
+
+<p> 阻止单击事件冒泡 .stop</p>
+<button id="vm4" v-on:click.stop="doThis">点我试试</button>
+
+<script>
+    var vm4 = new Vue({
+        el: '#vm4',
+        methods: {
+            doThis: function(){
+                alert("试试")
+            }
+        }
+    })
+</script>
+
+<h3>按键修饰符</h3>
+
+<input id="vm5" v-on:keyup.enter="alertMSG">
+
+<script>
+    var vm5 = new Vue({
+        el: '#vm5',
+        methods:{
+            alertMSG:function () {
+                alert("按键修饰符")
+            }
+        }
+    })
+</script>
+</body>
+</html>
