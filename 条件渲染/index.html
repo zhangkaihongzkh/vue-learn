@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js"></script>
+<template v-if="ok">
+    <h1>标题</h1>
+    <p>第一段</p>
+    <p>第二段</p>
+</template>
+<script>
+   /* var vm = new Vue({
+        el: 'template',
+        data: {
+            ok: true
+        }
+    })*/
+</script>
+
+<div v-if="Math.random() > .5">
+    随机数大于0.5
+</div>
+
+<div v-else>随机数小于0.5</div>
+
+<div v-if="Math.random() > 0.5">
+    Sorry
+</div>
+
+</body>
+</html>
