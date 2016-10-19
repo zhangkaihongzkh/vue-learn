@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js"></script>
+
+
+<div id="vm1">
+    <span> Message is: {{ message }}</span>
+    <br/>
+    <input type="text" v-model="message" placeholder="输入"/>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#vm1',
+        data: {
+            message: ''
+        }
+    })
+</script>
+
+<div id="vm2">
+    <span> Message is : </span>
+    <p>{{ message }}</p>
+    <br/>
+    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+</div>
+
+<script>
+    var vm2 = new Vue({
+        el: '#vm2',
+        data: {
+            message: ''
+        }
+    })
+</script>
+
+<div id="vm3">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+</div>
+<script>
+    var vm3 = new Vue({
+        el: '#vm3',
+        data: {
+            checked: ''
+        }
+    });
+</script>
+
+
+<div id="vm4">
+    <input type="checkbox" v-model="checkNames" id="i1">
+    <label for="i1">zkhzz</label>
+    <input type="checkbox" v-model="checkNames" id="i2">
+    <label for="i2">zzzzzzzz</label>
+    <input type="checkbox" v-model="checkNames" id="i3">
+    <label for="i3">kkkkkkkk</label>
+    <span>checkNames: {{ checkNames | json }}</span>
+</div>
+
+<script>
+    var vm4 = new Vue({
+        el: '#vm4',
+        data: {
+            checkNames: []
+        }
+    })
+</script>
+
+<div id="vm5">
+    <input type="radio" v-model="picked" value="one">one
+    <input type="radio" v-model="picked" value="two">two
+    <br/>
+    <span> picked : {{ picked }}</span>
+</div>
+<script>
+    var vm5 = new Vue({
+        el: '#vm5',
+        data: {
+            picked: []
+        }
+    })
+</script>
+
+<div id="vm6">
+    <select name="" id="" v-model="selected">
+        <option selected>A</option>
+        <option >B</option>
+        <option >C</option>
+    </select>
+    <span>selected: {{ selected | json}}</span>
+</div>
+
+<script>
+    var vm6 = new Vue({
+        el: '#vm6',
+        data: {
+            selected: []
+        }
+    })
+</script>
+
+<div id="vm7">
+    <select name="" id="" v-model="selected">
+        <option value="" v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Select: {{ selected }}</span>
+</div>
+
+<script>
+    var vm7 = new Vue({
+        el: '#vm7',
+        data:{
+            selected: 'A',
+            options: [
+                {text: 'One', value: 'A'},
+                {text: 'Two', value: 'B'},
+                {text: 'Three', value: 'C'}
+            ]
+        }
+    })
+</script>
+
+<div id="vm8">
+    <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:fales-value="b">
+    选择
+    <span>checkValue: {{ toggle }}</span>
+</div>
+
+<script>
+    var vm8 = new Vue({
+        el: '#vm8',
+        data: {
+            toggle:[]
+        }
+    })
+</script>
+
+<p>在 "change" 而不是 "input" 事件中更新</p>
+<div id="vm9">
+    <input type="text" v-model="msg" lazy>
+    <span>msg: {{ msg }}</span>
+</div>
+
+<script>
+    var vm9 = new Vue({
+        el: '#vm9',
+        data: {
+            msg: []
+        }
+    })
+</script>
+
+<p>设置一个最小的延时</p>
+<div id="vm10">
+    <input type="text" v-model="msg" debounce="1000">
+    <span>msg: {{ msg }}</span>
+</div>
+
+<script>
+    var vm10 = new Vue({
+        el: '#vm10',
+        data: {
+            msg: []
+        }
+    })
+</script>
+</body>
+</html>
